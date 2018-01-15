@@ -68,20 +68,14 @@ public class FilterDialog<T> implements View.OnClickListener {
 
             try {
                 Class aClass = item.getClass();
-                Field field1 = aClass.getDeclaredField(idField);
-                Field field2 = aClass.getDeclaredField(nameField);
-                field1.setAccessible(true);
-                field2.setAccessible(true);
+                Field field1 = getFieldFromName(aClass.getDeclaredFields(), idField);
+                Field field2 = getFieldFromName(aClass.getDeclaredFields(), nameField);
                 String code = field1.get(item).toString();
                 String name = field2.get(item).toString();
                 result.add(new FilterItem.Builder()
                         .code(code)
                         .name(name)
                         .build());
-            } catch (NoSuchFieldException e) {
-                if(e.getMessage() != null)
-                    Log.e(TAG, e.getMessage());
-                e.printStackTrace();
             } catch (IllegalAccessException e) {
                 if(e.getMessage() != null)
                     Log.e(TAG, e.getMessage());
@@ -91,6 +85,15 @@ public class FilterDialog<T> implements View.OnClickListener {
         return result;
     }
 
+    private Field getFieldFromName(Field[] fieldList, String name){
+        for(Field item : fieldList)
+            if(item.getName().equals(name)){
+                item.setAccessible(true);
+                return item;
+            }
+
+        return null;
+    }
 
     @Override
     public void onClick(View view) {
