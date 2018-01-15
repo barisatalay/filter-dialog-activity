@@ -32,8 +32,6 @@ Add dependencies in build.gradle.
 ### Step 3 (Use of library)
 Create FilterDialog;
 ```java
-   //Parameter 1: Activity,
-   //Paremeter 2: BluetoothCallback interface
    List<mdlPerson> personList = new ArrayList<>();
 
    personList.add(new mdlPerson("1","Bir"));
