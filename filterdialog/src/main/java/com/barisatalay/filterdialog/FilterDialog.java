@@ -2,6 +2,7 @@ package com.barisatalay.filterdialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.barisatalay.filterdialog.utils.UtilsDialog;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ import java.util.List;
  */
 
 public class FilterDialog<T> implements View.OnClickListener {
+    private String TAG = this.getClass().getSimpleName();
     private Activity mActivity;
     private AlertDialog.Builder alertDialogBuilder;
     private AlertDialog alertDialog;
@@ -58,26 +61,33 @@ public class FilterDialog<T> implements View.OnClickListener {
 
     public List<FilterItem> prepareFilterList(String idField, String nameField) {
         List<FilterItem> result = new ArrayList<>();
+        Iterator iterator = this.filterList.iterator();
 
-        for(T item : filterList){
+        while(iterator.hasNext()) {
+            Object item = iterator.next();
+
             try {
-                Field field1 = item.getClass().getDeclaredField(idField);
-                Field field2 = item.getClass().getDeclaredField(nameField);
-
+                Class aClass = item.getClass();
+                Field field1 = aClass.getDeclaredField(idField);
+                Field field2 = aClass.getDeclaredField(nameField);
                 field1.setAccessible(true);
                 field2.setAccessible(true);
-
+                String code = field1.get(item).toString();
+                String name = field2.get(item).toString();
                 result.add(new FilterItem.Builder()
-                        .code(field1.get(item).toString())
-                        .name(field2.get(item).toString())
+                        .code(code)
+                        .name(name)
                         .build());
             } catch (NoSuchFieldException e) {
+                if(e.getMessage() != null)
+                    Log.e(TAG, e.getMessage());
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
+                if(e.getMessage() != null)
+                    Log.e(TAG, e.getMessage());
                 e.printStackTrace();
             }
         }
-
         return result;
     }
 
