@@ -30,7 +30,7 @@ Add dependencies in build.gradle.
 ```
 
 ### Step 3 (Use of library)
-Create BluetoothProvider;
+Create FilterDialog;
 ```java
    //Parameter 1: Activity,
    //Paremeter 2: BluetoothCallback interface
