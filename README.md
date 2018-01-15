@@ -43,6 +43,11 @@ Create FilterDialog;
    
    filterDialog.setList(personList);
    
+   /*
+   * nameField : model's is the part that will appear on the screen.
+   * idField : id section in the model.
+   * dialogListener : when any row item selected, selected item will be return from interface
+   */
    filterDialog.show("code", "name", new DialogListener() {
    	@Override
    	public void onResult(FilterItem selectedItem) {
