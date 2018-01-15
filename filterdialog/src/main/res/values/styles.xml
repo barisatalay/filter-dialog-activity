@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.Icon.Red" parent="AppTheme.Dialog">
+        <item name="android:tint">@color/filterdialog_searchbox_icon</item>
+        <item name="android:scaleType">center</item>
+    </style>
+
+    <style name="AppTheme.TextView" parent="AppTheme.Dialog">
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="AppTheme.TextView.Quicksand" parent="AppTheme.TextView">
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+    </style>
+
+    <style name="AppTheme.TextView.Montserrat" parent="AppTheme.TextView">
+        <item name="android:fontFamily">@font/montserrat_regular_tr</item>
+    </style>
+</resources>

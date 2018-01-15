@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/filterdialog_background">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/filterdialog_toolbar"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp" >
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:id="@+id/toolbar_back"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/font_small"
+                android:paddingRight="@dimen/margin_normal"
+                android:background="?selectableItemBackground"
+                android:clickable="true">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:tint="@color/filterdialog_toolbar_text"
+                    app:srcCompat="@drawable/ic_arrow_left"/>
+                <TextView
+                    style="@style/AppTheme.TextView.Quicksand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="19dp"
+                    android:layout_marginRight="19dp"
+                    android:text="@string/filterdialog_back"
+                    android:textColor="@color/filterdialog_toolbar_text" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filterdialog_toolbarText"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textAllCaps="true"
+                style="@style/AppTheme.TextView.Montserrat"
+                android:textColor="@color/filterdialog_toolbar_text"/>
+
+            <TextView
+                android:id="@+id/toolbar_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/margin_normal"
+                android:paddingLeft="@dimen/margin_normal"
+                android:orientation="horizontal"
+                android:background="?selectableItemBackground"
+                android:clickable="true"
+                style="@style/AppTheme.TextView.Quicksand"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/filterdialog_toolbar_text"
+                android:text="@string/filterdialog_clear"/>
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/filterdialog_toolbar"
+        android:layout_below="@id/toolbar"
+        android:paddingBottom="20dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:paddingTop="@dimen/margin_normal"
+        android:paddingLeft="@dimen/stroke_normal"
+        android:paddingRight="@dimen/stroke_normal"
+        android:paddingBottom="@dimen/stroke_normal">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filterList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_radius_small"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/searchEdt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height_normal_big"
+                android:background="@drawable/bg_edittext_search"
+                android:hint="@string/filterdialog_searchEditHint"
+                android:textColorHint="@color/filterdialog_searchbox_hint"
+                style="@style/AppTheme.TextView.Quicksand"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_search_black"
+                android:paddingRight="11dp"
+                android:paddingTop="3dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                style="@style/AppTheme.Icon.Red"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

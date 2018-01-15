@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <stroke android:width="1dp" android:color="#00000000" />
+            <size android:width="190dp" android:height="190dp"/>
+            <corners android:radius="@dimen/radius_normal"/>
+        </shape>
+    </item>
+    <item android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp">
+        <shape>
+            <stroke android:width="1dp" android:color="#05000000" />
+            <size android:width="190dp" android:height="190dp"/>
+            <corners android:radius="@dimen/radius_normal"/>
+        </shape>
+    </item>
+    <item android:top="2dp" android:right="2dp" android:bottom="2dp" android:left="2dp">
+        <shape>
+            <stroke android:width="1dp" android:color="#0A000000" />
+            <size android:width="190dp" android:height="190dp"/>
+            <corners android:radius="@dimen/radius_normal"/>
+        </shape>
+    </item>
+    <item android:top="3dp" android:right="3dp" android:bottom="3dp" android:left="3dp">
+        <shape>
+            <stroke android:width="1dp" android:color="#0F000000" />
+            <corners android:radius="@dimen/radius_normal"/>
+            <size android:width="190dp" android:height="190dp"/>
+        </shape>
+    </item>
+    <item android:top="4dp" android:right="4dp" android:bottom="4dp" android:left="4dp">
+        <shape>
+            <stroke android:width="1dp" android:color="#15000000" />
+            <size android:width="190dp" android:height="190dp"/>
+            <corners android:radius="@dimen/radius_normal"/>
+        </shape>
+    </item>
+    <item android:top="5dp" android:right="5dp" android:bottom="5dp" android:left="5dp">
+        <shape>
+            <stroke android:width="1dp" android:color="#1A000000" />
+            <size android:width="190dp" android:height="190dp"/>
+            <corners android:radius="@dimen/radius_normal"/>
+        </shape>
+    </item>
+    <item android:top="6dp" android:right="6dp" android:bottom="6dp" android:left="6dp">
+        <shape>
+            <solid android:color="@color/filterdialog_searchbox_background"/>
+            <corners android:radius="@dimen/radius_normal"/>
+            <stroke android:color="@color/filterdialog_searchbox_border" android:width="@dimen/stroke_normal"/>
+        </shape>
+
+    </item>
+</layer-list>

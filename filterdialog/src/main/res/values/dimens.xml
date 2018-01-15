@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--RADIUS-->
+    <dimen name="radius_large">100dp</dimen>
+    <dimen name="radius_normal">30dp</dimen>
+    <dimen name="radius_small">3dp</dimen>
+    <!--RADIUS-->
+
+    <!--STROKE-->
+    <dimen name="stroke_normal">3dp</dimen>
+    <dimen name="stroke_big">5dp</dimen>
+    <!--STROKE-->
+
+    <dimen name="layout_height_normal_big">50dp</dimen>
+    <dimen name="margin_normal">20dp</dimen>
+    <dimen name="margin_smaller">7dp</dimen>
+    <dimen name="font_small">12sp</dimen>
+</resources>

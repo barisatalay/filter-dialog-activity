@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sample</string>
+
+
+    <string name="filterdialog_toolbarText">Filter</string>
+    <string name="filterdialog_back">Back</string>
+    <string name="filterdialog_clear">Clear</string>
+    <string name="filterdialog_searchEditHint">You can search</string>
+</resources>

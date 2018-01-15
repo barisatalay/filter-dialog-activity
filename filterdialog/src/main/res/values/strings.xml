@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Filter Dialog</string>
+    <string name="filterdialog_toolbarText">Filtrele</string>
+    <string name="filterdialog_back">Geri</string>
+    <string name="filterdialog_clear">Temizle</string>
+    <string name="filterdialog_searchEditHint">Arama yapabilirsiniz</string>
+</resources>

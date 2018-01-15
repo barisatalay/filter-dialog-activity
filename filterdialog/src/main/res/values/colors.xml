@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="colorTextStandart">#4D4D4D</color>
+
+    <color name="filterdialog_background">#eae7e7</color>
+    <color name="filterdialog_toolbar">#163645</color>
+    <color name="filterdialog_toolbar_text">@color/white</color>
+    <color name="filterdialog_searchbox_border">@color/white</color>
+    <color name="filterdialog_searchbox_background">#DDD4D4</color>
+    <color name="filterdialog_searchbox_text">@color/colorTextStandart</color>
+    <color name="filterdialog_searchbox_hint">#747373</color>
+    <color name="filterdialog_searchbox_icon">#0e242e</color>
+    <color name="filterdialog_row_text">@color/colorTextStandart</color>
+</resources>
