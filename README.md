@@ -51,6 +51,30 @@ Create FilterDialog;
    });
 ``` 
 
+## Customizing Filter Dialog Activity is very simple
+Just define your own project
+
+Color customization
+```xml
+<color name="filterdialog_background">#eae7e7</color>
+<color name="filterdialog_toolbar">#163645</color>
+<color name="filterdialog_toolbar_text">@color/white</color>
+<color name="filterdialog_searchbox_border">@color/white</color>
+<color name="filterdialog_searchbox_background">#DDD4D4</color>
+<color name="filterdialog_searchbox_text">@color/colorTextStandart</color>
+<color name="filterdialog_searchbox_hint">#747373</color>
+<color name="filterdialog_searchbox_icon">#0e242e</color>
+<color name="filterdialog_row_text">@color/colorTextStandart</color>
+```
+
+Text customization
+```xml
+<string name="filterdialog_toolbarText">Filter</string>
+<string name="filterdialog_back">Back</string>
+<string name="filterdialog_clear">Clear</string>
+<string name="filterdialog_searchEditHint">You can search</string>
+```
+
 ## Thanks
 - [Emre Can Akcan](https://github.com/emreakcan)
 
