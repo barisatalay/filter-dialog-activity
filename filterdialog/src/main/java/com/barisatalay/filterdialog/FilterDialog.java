@@ -13,6 +13,7 @@ import com.barisatalay.filterdialog.utils.UtilsDialog;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -68,8 +69,8 @@ public class FilterDialog<T> implements View.OnClickListener {
 
             try {
                 Class aClass = item.getClass();
-                Field field1 = getFieldFromName(aClass.getDeclaredFields(), idField);
-                Field field2 = getFieldFromName(aClass.getDeclaredFields(), nameField);
+                Field field1 = getFieldFromName(aClass, idField);
+                Field field2 = getFieldFromName(aClass, nameField);
                 String code = field1.get(item).toString();
                 String name = field2.get(item).toString();
                 result.add(new FilterItem.Builder()
@@ -85,14 +86,26 @@ public class FilterDialog<T> implements View.OnClickListener {
         return result;
     }
 
-    private Field getFieldFromName(Field[] fieldList, String name){
-        for(Field item : fieldList)
+    private Field getFieldFromName(Class<?> mClass, String name){
+        List<Field> allFields = getAllFields(mClass);
+
+        for(Field item : allFields)
             if(item.getName().equals(name)){
                 item.setAccessible(true);
                 return item;
             }
-
         return null;
+    }
+
+    public static List<Field> getAllFields(Class<?> type) {
+        List<Field> result = new ArrayList<>();
+        result.addAll(Arrays.asList(type.getDeclaredFields()));
+
+        if (type.getSuperclass() != null) {
+            result.addAll(getAllFields(type.getSuperclass()));
+        }
+
+        return result;
     }
 
     @Override

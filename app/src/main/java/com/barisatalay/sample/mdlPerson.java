@@ -4,28 +4,27 @@ package com.barisatalay.sample;
  * Created by Barış ATALAY on 12.01.2018.
  */
 
-public class mdlPerson {
-    private String code;
-    private String name;
+public class mdlPerson extends BasePerson{
+    private int age;
+    private String address;
 
     public mdlPerson(String code, String name) {
-        this.code = code;
-        this.name = name;
+        super(code, name);
     }
 
-    public String getCode() {
-        return code;
+    public int getAge() {
+        return age;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
