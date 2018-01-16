@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResult(FilterItem selectedItem) {
                         Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
+                        filterDialog.dispose();
                     }
                 });
             }

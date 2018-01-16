@@ -111,11 +111,20 @@ public class FilterDialog<T> implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.toolbar_back){
-            if(alertDialog != null) {
-                alertDialog.dismiss();
-                alertDialog = null;
-                alertDialogBuilder = null;
-            }
+            dispose();
+
+        }
+    }
+
+    public void dispose(){
+        clear();
+    }
+
+    private void clear() {
+        if(alertDialog != null) {
+            alertDialog.dismiss();
+            alertDialog = null;
+            alertDialogBuilder = null;
         }
     }
 }
