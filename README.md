@@ -25,7 +25,7 @@ allprojects {
 Add dependencies in build.gradle.
 ```groovy
     dependencies {
-       compile 'com.github.barisatalay:filter-dialog-activity:1.0.3'
+       compile 'com.github.barisatalay:filter-dialog-activity:1.0.5'
     }
 ```
 
@@ -52,6 +52,7 @@ Create FilterDialog;
    	@Override
    	public void onResult(FilterItem selectedItem) {
    		Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
+		filterDialog.dispose();
    	}
    });
 ``` 
