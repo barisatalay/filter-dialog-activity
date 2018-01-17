@@ -30,6 +30,7 @@ public class FilterDialog<T> implements View.OnClickListener {
     private DialogHolder dialogHolder;
     private String toolbarTitle;
     private String searchBoxHint;
+    private List<Class> simpleDialogFields;
 
     public FilterDialog(Activity mActivity) {
         this.mActivity = mActivity;
@@ -37,6 +38,16 @@ public class FilterDialog<T> implements View.OnClickListener {
         this.filterList = new ArrayList<>();
         this.toolbarTitle = "";
         this.searchBoxHint = "";
+        createSimpleDialogDefination();
+    }
+
+    private void createSimpleDialogDefination() {
+        simpleDialogFields = new ArrayList<>();
+        simpleDialogFields.add(String.class);
+        simpleDialogFields.add(Integer.class);
+        simpleDialogFields.add(Double.class);
+        simpleDialogFields.add(Float.class);
+        simpleDialogFields.add(Boolean.class);
     }
 
     public void setList(List<T> filterList){
@@ -51,22 +62,42 @@ public class FilterDialog<T> implements View.OnClickListener {
      * @param dialogListener : when any row item selected, selected item will be return from interface
      * */
     public void show(String idField, String nameField, DialogListener dialogListener){
-        LayoutInflater inflater = mActivity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.activity_filter_dialog, null);
-
-        dialogHolder = new DialogHolder(dialogView);
+        createDialogHolder();
         dialogHolder.setListener(dialogListener);
+        setDefaultParameters();
         dialogHolder.setFilterList(prepareFilterList(idField, nameField));
-        dialogHolder.setToolbarTitle(toolbarTitle);
-        dialogHolder.setSearchBoxHint(searchBoxHint);
-        dialogHolder.setOnCloseListener(this);
-
-        alertDialogBuilder.setView(dialogHolder.itemView);
 
         alertDialog = alertDialogBuilder.show();
     }
 
-    public List<FilterItem> prepareFilterList(String idField, String nameField) {
+    /**
+     * When you have List<String,Integer,Boolean,Double,Float> should be use this method
+     * */
+    public void show(DialogListener dialogListener){
+        createDialogHolder();
+        dialogHolder.setListener(dialogListener);
+        setDefaultParameters();
+
+        dialogHolder.setFilterList(prepareFilterList("",""));
+        alertDialog = alertDialogBuilder.show();
+    }
+
+    private void setDefaultParameters() {
+        dialogHolder.setToolbarTitle(toolbarTitle);
+        dialogHolder.setSearchBoxHint(searchBoxHint);
+        dialogHolder.setOnCloseListener(this);
+    }
+
+
+    private void createDialogHolder() {
+        LayoutInflater inflater = mActivity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.activity_filter_dialog, null);
+
+        dialogHolder = new DialogHolder(dialogView);
+        alertDialogBuilder.setView(dialogHolder.itemView);
+    }
+
+    public List<FilterItem> prepareFilterList(String idFieldDef, String nameFieldDef) {
         List<FilterItem> result = new ArrayList<>();
         Iterator iterator = this.filterList.iterator();
 
@@ -75,31 +106,45 @@ public class FilterDialog<T> implements View.OnClickListener {
 
             try {
                 Class aClass = item.getClass();
-                Field field1 = getFieldFromName(aClass, idField);
-                Field field2 = getFieldFromName(aClass, nameField);
-                if (field1 == null) {
-                    //Id field not found!
-                    Log.e(TAG, "Id field not found!");
-                    continue;
+                if(!simpleDialogFields.contains(aClass)) {
+                    //If idFieldDef was not set, nameFieldDef takes its place
+                    if (!idFieldDef.isEmpty())
+                        idFieldDef = nameFieldDef;
+
+                    Field idField = getFieldFromName(aClass, idFieldDef);
+                    Field nameField = getFieldFromName(aClass, nameFieldDef);
+                    if (idField == null) {
+                        //Id field not found!
+                        Log.e(TAG, "Id field not found!");
+                        continue;
+                    }
+
+                    if (nameField == null) {
+                        //Name field not found!
+                        Log.e(TAG, "Name field not found!");
+                        continue;
+                    }
+
+                    Object idFieldObject = idField.get(item);
+                    Object nameFieldObject = nameField.get(item);
+
+                    //Value null control
+                    String code = idFieldObject != null ? idFieldObject.toString() : "";
+                    String name = nameFieldObject != null ? nameFieldObject.toString() : "";
+
+                    result.add(new FilterItem.Builder()
+                            .code(code)
+                            .name(name)
+                            .build());
+                }else{
+                    /**
+                     * For ArrayList<String,Integer,Boolean,Double,Float>
+                     */
+                    result.add(new FilterItem.Builder()
+                            .code(String.valueOf(item))
+                            .name(String.valueOf(item))
+                            .build());
                 }
-
-                if (field2 == null) {
-                    //Name field not found!
-                    Log.e(TAG, "Name field not found!");
-                    continue;
-                }
-
-                Object field1Object = field1.get(item);
-                Object field2Object = field2.get(item);
-
-                //Value null control
-                String code = field1Object!=null?field1Object.toString():"";
-                String name = field2Object!=null?field2Object.toString():"";
-
-                result.add(new FilterItem.Builder()
-                        .code(code)
-                        .name(name)
-                        .build());
             } catch (IllegalAccessException e) {
                 if(e.getMessage() != null)
                     Log.e(TAG, e.getMessage());
@@ -135,7 +180,6 @@ public class FilterDialog<T> implements View.OnClickListener {
     public void onClick(View view) {
         if(view.getId() == R.id.toolbar_back){
             dispose();
-
         }
     }
 

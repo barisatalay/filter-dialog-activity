@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final FilterDialog filterDialog = new FilterDialog<mdlPerson>(MainActivity.this);
 
-                filterDialog.setToolbarTitle("Filter Dialog");
+                filterDialog.setToolbarTitle("Model Filter");
                 filterDialog.setSearchBoxHint("You can search");
                 filterDialog.setList(personList);
 
@@ -46,5 +46,60 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<String> stringList = new ArrayList<>();
+                stringList.add("Item 1");
+                stringList.add("Item 2");
+                stringList.add("Item 3");
+                stringList.add("Item 4");
+                stringList.add("Item 5");
+                stringList.add("Item 6");
+                stringList.add("Item 7");
+
+                final FilterDialog filterDialog = new FilterDialog<String>(MainActivity.this);
+
+                filterDialog.setToolbarTitle("String Filter");
+                filterDialog.setSearchBoxHint("You can search");
+                filterDialog.setList(stringList);
+
+                filterDialog.show(new DialogListener() {
+                    @Override
+                    public void onResult(FilterItem selectedItem) {
+                        Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
+                        filterDialog.dispose();
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Integer> integerList = new ArrayList<>();
+                integerList.add(1);
+                integerList.add(2);
+                integerList.add(3);
+                integerList.add(4);
+                integerList.add(5);
+                integerList.add(6);
+                integerList.add(7);
+
+                final FilterDialog filterDialog = new FilterDialog<Integer>(MainActivity.this);
+
+                filterDialog.setToolbarTitle("Integer Filter");
+                filterDialog.setSearchBoxHint("You can search");
+                filterDialog.setList(integerList);
+
+                filterDialog.show(new DialogListener() {
+                    @Override
+                    public void onResult(FilterItem selectedItem) {
+                        Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
+                        filterDialog.dispose();
+                    }
+                });
+            }
+        });
     }
 }
