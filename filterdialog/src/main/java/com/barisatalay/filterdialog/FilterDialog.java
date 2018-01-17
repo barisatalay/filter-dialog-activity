@@ -71,8 +71,25 @@ public class FilterDialog<T> implements View.OnClickListener {
                 Class aClass = item.getClass();
                 Field field1 = getFieldFromName(aClass, idField);
                 Field field2 = getFieldFromName(aClass, nameField);
-                String code = field1.get(item).toString();
-                String name = field2.get(item).toString();
+                if (field1 == null) {
+                    //Id field not found!
+                    Log.e(TAG, "Id field not found!");
+                    continue;
+                }
+
+                if (field2 == null) {
+                    //Name field not found!
+                    Log.e(TAG, "Name field not found!");
+                    continue;
+                }
+
+                Object field1Object = field1.get(item);
+                Object field2Object = field2.get(item);
+
+                //Value null control
+                String code = field1Object!=null?field1Object.toString():"";
+                String name = field2Object!=null?field2Object.toString():"";
+
                 result.add(new FilterItem.Builder()
                         .code(code)
                         .name(name)
