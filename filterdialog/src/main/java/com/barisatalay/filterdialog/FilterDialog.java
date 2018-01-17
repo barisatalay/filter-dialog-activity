@@ -28,11 +28,15 @@ public class FilterDialog<T> implements View.OnClickListener {
     private AlertDialog alertDialog;
     private List<T> filterList;
     private DialogHolder dialogHolder;
+    private String toolbarTitle;
+    private String searchBoxHint;
 
     public FilterDialog(Activity mActivity) {
         this.mActivity = mActivity;
-        alertDialogBuilder = UtilsDialog.createAlertDialog(mActivity);
+        this.alertDialogBuilder = UtilsDialog.createAlertDialog(mActivity);
         this.filterList = new ArrayList<>();
+        this.toolbarTitle = "";
+        this.searchBoxHint = "";
     }
 
     public void setList(List<T> filterList){
@@ -53,6 +57,8 @@ public class FilterDialog<T> implements View.OnClickListener {
         dialogHolder = new DialogHolder(dialogView);
         dialogHolder.setListener(dialogListener);
         dialogHolder.setFilterList(prepareFilterList(idField, nameField));
+        dialogHolder.setToolbarTitle(toolbarTitle);
+        dialogHolder.setSearchBoxHint(searchBoxHint);
         dialogHolder.setOnCloseListener(this);
 
         alertDialogBuilder.setView(dialogHolder.itemView);
@@ -143,5 +149,21 @@ public class FilterDialog<T> implements View.OnClickListener {
             alertDialog = null;
             alertDialogBuilder = null;
         }
+    }
+
+    public String getToolbarTitle() {
+        return toolbarTitle;
+    }
+
+    public void setToolbarTitle(String toolbarTitle) {
+        this.toolbarTitle = toolbarTitle;
+    }
+
+    public String getSearchBoxHint() {
+        return searchBoxHint;
+    }
+
+    public void setSearchBoxHint(String searchBoxHint) {
+        this.searchBoxHint = searchBoxHint;
     }
 }

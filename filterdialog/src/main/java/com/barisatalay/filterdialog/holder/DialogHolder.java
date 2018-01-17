@@ -26,6 +26,7 @@ public class DialogHolder extends RecyclerView.ViewHolder implements TextWatcher
     private EditText searchEdt;
     private RecyclerView filterRecycler;
     private TextView toolbar_clear;
+    private TextView toolbat_title;
     private LinearLayout toolbar_back;
     private DialogListener listener;
 
@@ -50,6 +51,7 @@ public class DialogHolder extends RecyclerView.ViewHolder implements TextWatcher
         filterRecycler = itemView.findViewById(R.id.filterList);
         toolbar_clear = itemView.findViewById(R.id.toolbar_clear);
         toolbar_back = itemView.findViewById(R.id.toolbar_back);
+        toolbat_title = itemView.findViewById(R.id.toolbat_title);
 
         toolbar_clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,5 +94,15 @@ public class DialogHolder extends RecyclerView.ViewHolder implements TextWatcher
 
     public void setOnCloseListener(View.OnClickListener onCloseListener) {
         toolbar_back.setOnClickListener(onCloseListener);
+    }
+
+    public DialogHolder setToolbarTitle(String text) {
+        toolbat_title.setText(text);
+        return this;
+    }
+
+    public DialogHolder setSearchBoxHint(String text) {
+        searchEdt.setHint(text);
+        return this;
     }
 }

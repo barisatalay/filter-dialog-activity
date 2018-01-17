@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
                 final FilterDialog filterDialog = new FilterDialog<mdlPerson>(MainActivity.this);
 
+                filterDialog.setToolbarTitle("Filter Dialog");
+                filterDialog.setSearchBoxHint("You can search");
                 filterDialog.setList(personList);
 
                 filterDialog.show("code", "name", new DialogListener() {
