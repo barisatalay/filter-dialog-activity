@@ -4,7 +4,7 @@
 Filter Dialog Activity for Android Projects
 
 
-#Screen Shots
+## Screen Shots
 
 ![alt tag](screen/Capture.PNG)
 
@@ -30,7 +30,7 @@ Add dependencies in build.gradle.
 ```
 
 ### Step 3 (Use of library)
-Create FilterDialog;
+Create FilterDialog for Custom class;
 ```java
    List<mdlPerson> personList = new ArrayList<>();
 
@@ -39,8 +39,9 @@ Create FilterDialog;
    personList.add(new mdlPerson("3","Üç"));
    personList.add(new mdlPerson("4","Dört"));
    
-   final FilterDialog filterDialog = new FilterDialog<mdlPerson>(MainActivity.this);
-   
+   final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
+   filterDialog.setToolbarTitle("Model Filter");
+   filterDialog.setSearchBoxHint("You can search");
    filterDialog.setList(personList);
    
    /*
@@ -57,7 +58,36 @@ Create FilterDialog;
    });
 ``` 
 
-## Customizing Filter Dialog Activity is very simple
+### Step 3 (Use of library)
+Create FilterDialog for String class;
+```java
+   List<String> stringList = new ArrayList<>();
+   stringList.add("Item 1");
+   stringList.add("Item 2");
+   stringList.add("Item 3");
+   stringList.add("Item 4");
+   stringList.add("Item 5");
+   stringList.add("Item 6");
+   stringList.add("Item 7");
+   
+   final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
+   filterDialog.setToolbarTitle("String Filter");
+   filterDialog.setSearchBoxHint("You can search");
+   filterDialog.setList(stringList);
+   
+   /*
+   * When you have List<String,Integer,Boolean,Double,Float> should be use this method
+   */
+   filterDialog.show(new DialogListener() {
+   	@Override
+   	public void onResult(FilterItem selectedItem) {
+   		Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
+		filterDialog.dispose();
+   	}
+   });
+``` 
+
+## Step 4 - Customizing Filter Dialog Activity is very simple
 Just define your own project
 
 Color customization
@@ -75,10 +105,8 @@ Color customization
 
 Text customization
 ```xml
-<string name="filterdialog_toolbarText">Filter</string>
 <string name="filterdialog_back">Back</string>
 <string name="filterdialog_clear">Clear</string>
-<string name="filterdialog_searchEditHint">You can search</string>
 ```
 
 ## Thanks
