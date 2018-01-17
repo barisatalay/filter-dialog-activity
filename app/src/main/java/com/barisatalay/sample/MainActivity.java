@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 personList.add(new mdlPerson("3","Üç"));
                 personList.add(new mdlPerson("4","Dört"));
 
-                final FilterDialog filterDialog = new FilterDialog<mdlPerson>(MainActivity.this);
+                final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
 
                 filterDialog.setToolbarTitle("Model Filter");
                 filterDialog.setSearchBoxHint("You can search");
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 stringList.add("Item 6");
                 stringList.add("Item 7");
 
-                final FilterDialog filterDialog = new FilterDialog<String>(MainActivity.this);
+                final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
 
                 filterDialog.setToolbarTitle("String Filter");
                 filterDialog.setSearchBoxHint("You can search");
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 integerList.add(6);
                 integerList.add(7);
 
-                final FilterDialog filterDialog = new FilterDialog<Integer>(MainActivity.this);
+                final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
 
                 filterDialog.setToolbarTitle("Integer Filter");
                 filterDialog.setSearchBoxHint("You can search");

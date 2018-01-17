@@ -21,12 +21,12 @@ import java.util.List;
  * Created by Barış ATALAY on 12.01.2018.
  */
 
-public class FilterDialog<T> implements View.OnClickListener {
+public class FilterDialog implements View.OnClickListener {
     private String TAG = this.getClass().getSimpleName();
     private Activity mActivity;
     private AlertDialog.Builder alertDialogBuilder;
     private AlertDialog alertDialog;
-    private List<T> filterList;
+    private List filterList;
     private DialogHolder dialogHolder;
     private String toolbarTitle;
     private String searchBoxHint;
@@ -50,7 +50,7 @@ public class FilterDialog<T> implements View.OnClickListener {
         simpleDialogFields.add(Boolean.class);
     }
 
-    public void setList(List<T> filterList){
+    public void setList(List filterList){
         this.filterList.clear();
         if(filterList != null)
             this.filterList.addAll(filterList);
