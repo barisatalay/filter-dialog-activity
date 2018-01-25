@@ -31,6 +31,7 @@ public class FilterDialog implements View.OnClickListener {
     private String toolbarTitle;
     private String searchBoxHint;
     private List<Class> simpleDialogFields;
+    private View.OnClickListener closeListener;
 
     public FilterDialog(Activity mActivity) {
         this.mActivity = mActivity;
@@ -38,6 +39,7 @@ public class FilterDialog implements View.OnClickListener {
         this.filterList = new ArrayList<>();
         this.toolbarTitle = "";
         this.searchBoxHint = "";
+        backPressedEnabled(true);
         createSimpleDialogDefination();
     }
 
@@ -85,14 +87,18 @@ public class FilterDialog implements View.OnClickListener {
     private void setDefaultParameters() {
         dialogHolder.setToolbarTitle(toolbarTitle);
         dialogHolder.setSearchBoxHint(searchBoxHint);
-        dialogHolder.setOnCloseListener(this);
+        dialogHolder.setOnCloseListener(closeListener!=null?closeListener:this);
     }
 
+    public FilterDialog setOnCloseListener(View.OnClickListener listener){
+        this.closeListener = listener;
+
+        return this;
+    }
 
     private void createDialogHolder() {
         LayoutInflater inflater = mActivity.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_filter_dialog, null);
-
         dialogHolder = new DialogHolder(dialogView);
         alertDialogBuilder.setView(dialogHolder.itemView);
     }
@@ -209,5 +215,9 @@ public class FilterDialog implements View.OnClickListener {
 
     public void setSearchBoxHint(String searchBoxHint) {
         this.searchBoxHint = searchBoxHint;
+    }
+
+    public void backPressedEnabled(boolean value) {
+        alertDialogBuilder.setCancelable(value);
     }
 }
