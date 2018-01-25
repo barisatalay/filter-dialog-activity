@@ -75,6 +75,14 @@ Create FilterDialog for String class;
    filterDialog.setSearchBoxHint("You can search");
    filterDialog.setList(stringList);
    
+   filterDialog.backPressedEnabled(false);
+   filterDialog.setOnCloseListener(new View.OnClickListener() {
+   	@Override
+        public void onClick(View view) {
+        	filterDialog.dispose();
+        }
+   });
+   
    /*
    * When you have List<String,Integer,Boolean,Double,Float> should be use this method
    */
