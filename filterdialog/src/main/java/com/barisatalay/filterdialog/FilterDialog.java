@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.barisatalay.filterdialog.holder.DialogHolder;
 import com.barisatalay.filterdialog.model.DialogListener;
@@ -97,9 +98,10 @@ public class FilterDialog implements View.OnClickListener {
     }
 
     private void createDialogHolder() {
-        LayoutInflater inflater = mActivity.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.activity_filter_dialog, null);
-        dialogHolder = new DialogHolder(dialogView);
+        RelativeLayout view = new RelativeLayout(mActivity);
+        LayoutInflater.from(mActivity).inflate(R.layout.activity_filter_dialog, view, true);
+
+        dialogHolder = new DialogHolder(view);
         alertDialogBuilder.setView(dialogHolder.itemView);
     }
 
