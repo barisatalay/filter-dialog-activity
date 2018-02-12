@@ -114,7 +114,7 @@ public class FilterDialog implements View.OnClickListener {
                 Class aClass = item.getClass();
                 if(!simpleDialogFields.contains(aClass)) {
                     //If idFieldDef was not set, nameFieldDef takes its place
-                    if (!idFieldDef.isEmpty())
+                    if (idFieldDef.isEmpty() && !nameFieldDef.isEmpty())
                         idFieldDef = nameFieldDef;
 
                     Field idField = getFieldFromName(aClass, idFieldDef);

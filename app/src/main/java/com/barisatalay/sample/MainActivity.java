@@ -22,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<mdlPerson> personList = new ArrayList<>();
+                List<mdlHotel> personList = new ArrayList<>();
 
-                personList.add(new mdlPerson("1","Bir"));
-                personList.add(new mdlPerson("2","İki"));
-                personList.add(new mdlPerson("3","Üç"));
-                personList.add(new mdlPerson("4","Dört"));
+                personList.add(new mdlHotel("1","Bir"));
+                personList.add(new mdlHotel("2","İki"));
+                personList.add(new mdlHotel("3","Üç"));
+                personList.add(new mdlHotel("4","Dört"));
 
                 final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 filterDialog.setSearchBoxHint("You can search");
                 filterDialog.setList(personList);
 
-                filterDialog.show("code", "name", new DialogListener() {
+                filterDialog.show("Otel", "Adi", new DialogListener() {
                     @Override
                     public void onResult(FilterItem selectedItem) {
                         Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
