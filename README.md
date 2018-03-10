@@ -3,6 +3,11 @@
 # filter-dialog-activity
 Filter Dialog Activity for Android Projects
 
+# Whos uses this library?
+[Paximum](https://play.google.com/store/apps/details?id=com.santsg.paximum)
+
+[Sejour Mobile](https://play.google.com/store/apps/details?id=com.santsg.sejourmobile)
+
 
 ## Screen Shots
 
