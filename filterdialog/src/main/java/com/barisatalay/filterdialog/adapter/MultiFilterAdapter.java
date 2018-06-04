@@ -1,20 +1,16 @@
-package com.barisatalay.filterdialog;
+package com.barisatalay.filterdialog.adapter;
 
 import android.view.View;
 
-import com.barisatalay.filterdialog.base.BaseRecyclerAdapter;
+import com.barisatalay.filterdialog.R;
 import com.barisatalay.filterdialog.holder.FilterHolder;
 import com.barisatalay.filterdialog.model.FilterItem;
 
 import java.util.List;
 
-/**
- * Created by Barış ATALAY on 12.01.2018.
- */
+public class MultiFilterAdapter extends FilterAdapter{
 
-public class FilterAdapter extends BaseRecyclerAdapter<FilterHolder, FilterItem> {
-
-    public FilterAdapter(List<FilterItem> cacheData) {
+    public MultiFilterAdapter(List<FilterItem> cacheData) {
         super(cacheData);
     }
 
@@ -46,20 +42,5 @@ public class FilterAdapter extends BaseRecyclerAdapter<FilterHolder, FilterItem>
     @Override
     public void onClickListener(View view, int position) {
         selectEvent(position);
-    }
-
-    public void filter(String text) {
-        getCacheData().clear();
-        if(text != null && !text.isEmpty()){
-            text = text.toLowerCase();
-            for(FilterItem item: getAllData()){
-                if(item.getName().toLowerCase().contains(text)){
-                    getCacheData().add(item);
-                }
-            }
-        }else{
-            getCacheData().addAll(getAllData());
-        }
-        notifyDataSetChanged();
     }
 }

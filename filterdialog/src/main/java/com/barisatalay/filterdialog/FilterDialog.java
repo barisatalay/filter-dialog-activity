@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import com.barisatalay.filterdialog.holder.DialogHolder;
 import com.barisatalay.filterdialog.model.DialogListener;
 import com.barisatalay.filterdialog.model.FilterItem;
+import com.barisatalay.filterdialog.model.FilterType;
 import com.barisatalay.filterdialog.utils.UtilsDialog;
 
 import java.lang.reflect.Field;
@@ -34,6 +35,7 @@ public class FilterDialog implements View.OnClickListener {
     private List<Class> simpleDialogFields;
     private View.OnClickListener closeListener;
     private int selectableCount;
+    private String selectButtonText;
 
     public FilterDialog(Activity mActivity) {
         this.mActivity = mActivity;
@@ -41,6 +43,7 @@ public class FilterDialog implements View.OnClickListener {
         this.filterList = new ArrayList<>();
         this.toolbarTitle = "";
         this.searchBoxHint = "";
+        this.selectButtonText = "";
         this.selectableCount = 1;
         backPressedEnabled(true);
         createSimpleDialogDefination();
@@ -66,7 +69,7 @@ public class FilterDialog implements View.OnClickListener {
      * @param dialogListener : when any row item selected, selected item will be return from interface
      * */
     public void show(String idField, String nameField, DialogListener.Single dialogListener){
-        createDialogHolder();
+        createDialogHolder(FilterType.Single);
         dialogHolder.setListenerSingle(dialogListener);
         setDefaultParameters();
         dialogHolder.setFilterList(prepareFilterList(idField, nameField));
@@ -77,7 +80,7 @@ public class FilterDialog implements View.OnClickListener {
      * When you have List<String,Integer,Boolean,Double,Float> should be use this method
      * */
     public void show(DialogListener.Single dialogListener){
-        createDialogHolder();
+        createDialogHolder(FilterType.Single);
         dialogHolder.setListenerSingle(dialogListener);
         setDefaultParameters();
 
@@ -93,7 +96,7 @@ public class FilterDialog implements View.OnClickListener {
         if (getSelectableCount() < 2){
             throw new RuntimeException("To be able to use this method 'SelectableCount' should be two or over.");
         }
-        createDialogHolder();
+        createDialogHolder(FilterType.Multiple);
         dialogHolder.setListenerMultiple(dialogListener);
         setDefaultParameters();
         dialogHolder.setFilterList(prepareFilterList(idField, nameField));
@@ -107,7 +110,7 @@ public class FilterDialog implements View.OnClickListener {
         if (getSelectableCount() < 2){
             throw new RuntimeException("To be able to use this method 'SelectableCount' should be two or over.");
         }
-        createDialogHolder();
+        createDialogHolder(FilterType.Multiple);
         dialogHolder.setListenerMultiple(dialogListener);
         setDefaultParameters();
 
@@ -117,6 +120,7 @@ public class FilterDialog implements View.OnClickListener {
     private void setDefaultParameters() {
         dialogHolder.setToolbarTitle(toolbarTitle);
         dialogHolder.setSearchBoxHint(searchBoxHint);
+        dialogHolder.setSelectButton(selectButtonText);
         dialogHolder.setOnCloseListener(closeListener!=null?closeListener:this);
         dialogHolder.setSelectableCount(selectableCount);
     }
@@ -127,11 +131,12 @@ public class FilterDialog implements View.OnClickListener {
         return this;
     }
 
-    private void createDialogHolder() {
+    private void createDialogHolder(FilterType filterType) {
         RelativeLayout view = new RelativeLayout(mActivity);
         LayoutInflater.from(mActivity).inflate(R.layout.activity_filter_dialog, view, true);
 
         dialogHolder = new DialogHolder(view);
+        dialogHolder.setFilterType(filterType);
         alertDialogBuilder.setView(dialogHolder.itemView);
     }
 
@@ -259,5 +264,9 @@ public class FilterDialog implements View.OnClickListener {
 
     public int getSelectableCount() {
         return selectableCount;
+    }
+
+    public void setSelectButtonText(String selectButtonText) {
+        this.selectButtonText = selectButtonText;
     }
 }

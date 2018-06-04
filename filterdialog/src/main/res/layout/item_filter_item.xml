@@ -7,7 +7,7 @@
         android:id="@+id/titleTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
+        android:background="@color/colorTextStandart"
         style="@style/AppTheme.TextView.Quicksand"
         android:clickable="true"
         android:focusable="true"

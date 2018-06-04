@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
                 filterDialog.setToolbarTitle("Model Filter");
                 filterDialog.setSearchBoxHint("You can search");
+                filterDialog.setSelectButtonText("Select");
                 filterDialog.setList(personList);
                 filterDialog.setSelectableCount(2);
 
