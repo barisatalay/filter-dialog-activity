@@ -30,7 +30,7 @@ allprojects {
 Add dependencies in build.gradle.
 ```groovy
     dependencies {
-       compile 'com.github.barisatalay:filter-dialog-activity:1.0.10'
+       compile 'com.github.barisatalay:filter-dialog-activity:1.1.12'
     }
 ```
 
@@ -54,7 +54,7 @@ Create FilterDialog for Custom class;
    * idField : id section in the model.
    * dialogListener : when any row item selected, selected item will be return from interface
    */
-   filterDialog.show("code", "name", new DialogListener() {
+   filterDialog.show("code", "name", new DialogListener.Single() {
    	@Override
    	public void onResult(FilterItem selectedItem) {
    		Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
@@ -91,14 +91,42 @@ Create FilterDialog for String class;
    /*
    * When you have List<String,Integer,Boolean,Double,Float> should be use this method
    */
-   filterDialog.show(new DialogListener() {
+   filterDialog.show(new DialogListener.Single() {
    	@Override
    	public void onResult(FilterItem selectedItem) {
    		Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
 		filterDialog.dispose();
    	}
    });
-``` 
+```
+
+### Step 3 (Use of library for multiple select)
+Create FilterDialog for Custom class;
+```java
+   List<mdlHotel> personList = new ArrayList<>();
+
+   personList.add(new mdlHotel("1","Bir"));
+   personList.add(new mdlHotel("2","İki"));
+   personList.add(new mdlHotel("3","Üç"));
+   personList.add(new mdlHotel("4","Dört"));
+
+   final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
+
+   filterDialog.setToolbarTitle("Model Filter");
+   filterDialog.setSearchBoxHint("You can search");
+   filterDialog.setSelectButtonText("Select");
+   filterDialog.setList(personList);
+   filterDialog.setSelectableCount(2);
+
+   filterDialog.show("Otel", "Adi", new DialogListener.Multiple() {
+       @Override
+       public void onResult(List<FilterItem> selectedItems) {
+           for (int i=0;i<selectedItems.size();i++)
+               Toast.makeText(MainActivity.this, "Selected is: " + selectedItems.get(i).getName(), Toast.LENGTH_SHORT).show();
+           filterDialog.dispose();
+       }
+   });
+```
 
 ## Step 4 - Customizing Filter Dialog Activity is very simple
 Just define your own project
