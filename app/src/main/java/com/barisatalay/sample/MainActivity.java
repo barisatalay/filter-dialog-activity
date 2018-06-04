@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 filterDialog.setSearchBoxHint("You can search");
                 filterDialog.setList(personList);
 
-                filterDialog.show("Otel", "Adi", new DialogListener() {
+                filterDialog.show("Otel", "Adi", new DialogListener.Single() {
                     @Override
                     public void onResult(FilterItem selectedItem) {
                         Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                filterDialog.show(new DialogListener() {
+                filterDialog.show(new DialogListener.Single() {
                     @Override
                     public void onResult(FilterItem selectedItem) {
                         Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
@@ -101,10 +101,39 @@ public class MainActivity extends AppCompatActivity {
                 filterDialog.setSearchBoxHint("You can search");
                 filterDialog.setList(integerList);
 
-                filterDialog.show(new DialogListener() {
+                filterDialog.show(new DialogListener.Single() {
                     @Override
                     public void onResult(FilterItem selectedItem) {
                         Toast.makeText(MainActivity.this, "Selected is: " + selectedItem.getName(), Toast.LENGTH_SHORT).show();
+                        filterDialog.dispose();
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<mdlHotel> personList = new ArrayList<>();
+
+                personList.add(new mdlHotel("1","Bir"));
+                personList.add(new mdlHotel("2","İki"));
+                personList.add(new mdlHotel("3","Üç"));
+                personList.add(new mdlHotel("4","Dört"));
+
+                final FilterDialog filterDialog = new FilterDialog(MainActivity.this);
+
+                filterDialog.setToolbarTitle("Model Filter");
+                filterDialog.setSearchBoxHint("You can search");
+                filterDialog.setSelectButtonText("Select");
+                filterDialog.setList(personList);
+                filterDialog.setSelectableCount(2);
+
+                filterDialog.show("Otel", "Adi", new DialogListener.Multiple() {
+                    @Override
+                    public void onResult(List<FilterItem> selectedItems) {
+                        for (int i=0;i<selectedItems.size();i++)
+                            Toast.makeText(MainActivity.this, "Selected is: " + selectedItems.get(i).getName(), Toast.LENGTH_SHORT).show();
                         filterDialog.dispose();
                     }
                 });

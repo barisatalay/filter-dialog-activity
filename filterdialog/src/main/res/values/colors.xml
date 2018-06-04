@@ -12,4 +12,5 @@
     <color name="filterdialog_searchbox_hint">#747373</color>
     <color name="filterdialog_searchbox_icon">#0e242e</color>
     <color name="filterdialog_row_text">@color/colorTextStandart</color>
+    <color name="filterdialog_row_selected">#ababab</color>
 </resources>
