@@ -39,18 +39,4 @@ public class SingleFilterAdapter extends FilterAdapter {
         return false;
     }
 
-    public void filter(String text) {
-        getCacheData().clear();
-        if(text != null && !text.isEmpty()){
-            text = text.toLowerCase();
-            for(FilterItem item: getAllData()){
-                if(item.getName().toLowerCase().contains(text)){
-                    getCacheData().add(item);
-                }
-            }
-        }else{
-            getCacheData().addAll(getAllData());
-        }
-        notifyDataSetChanged();
-    }
 }
