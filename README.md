@@ -30,7 +30,7 @@ allprojects {
 Add dependencies in build.gradle.
 ```groovy
     dependencies {
-       compile 'com.github.barisatalay:filter-dialog-activity:1.1.12'
+       compile 'com.github.barisatalay:filter-dialog-activity:1.0.14'
     }
 ```
 
