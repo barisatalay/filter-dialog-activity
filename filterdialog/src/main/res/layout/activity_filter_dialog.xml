@@ -40,7 +40,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:tint="@color/filterdialog_toolbar_text"
-                    app:srcCompat="@drawable/ic_arrow_left"/>
+                    app:srcCompat="@drawable/ic_filterdialog_arrow_left"/>
                 <TextView
                     style="@style/AppTheme.TextView.Quicksand"
                     android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_search_black"
+                app:srcCompat="@drawable/ic_filterdialog_search_black"
                 android:paddingRight="11dp"
                 android:paddingTop="3dp"
                 android:layout_centerVertical="true"
