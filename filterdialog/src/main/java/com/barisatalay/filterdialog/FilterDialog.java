@@ -49,6 +49,23 @@ public class FilterDialog implements View.OnClickListener {
         createSimpleDialogDefination();
     }
 
+    public FilterDialog() {
+        this.filterList = new ArrayList<>();
+        this.toolbarTitle = "";
+        this.searchBoxHint = "";
+        this.selectButtonText = "";
+        this.selectableCount = 1;
+        backPressedEnabled(true);
+        createSimpleDialogDefination();
+    }
+
+    public FilterDialog setActivity(Activity mActivity){
+        this.mActivity = mActivity;
+        this.alertDialogBuilder = UtilsDialog.createAlertDialog(mActivity);
+
+        return this;
+    }
+
     private void createSimpleDialogDefination() {
         simpleDialogFields = new ArrayList<>();
         simpleDialogFields.add(String.class);
