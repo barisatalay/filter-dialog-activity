@@ -55,14 +55,13 @@ public class FilterDialog implements View.OnClickListener {
         this.searchBoxHint = "";
         this.selectButtonText = "";
         this.selectableCount = 1;
-        backPressedEnabled(true);
         createSimpleDialogDefination();
     }
 
     public FilterDialog setActivity(Activity mActivity){
         this.mActivity = mActivity;
         this.alertDialogBuilder = UtilsDialog.createAlertDialog(mActivity);
-
+        backPressedEnabled(true);
         return this;
     }
 
