@@ -8,6 +8,10 @@ Filter Dialog Activity for Android Projects
 
 [Sejour Mobile](https://play.google.com/store/apps/details?id=com.santsg.sejourmobile)
 
+[Tarım Simsari](https://play.google.com/store/apps/details?id=com.tarimsimsari.mobile)
+
+[TourVisio 2 Mobile](https://play.google.com/store/apps/details?id=com.santsg.tv2m)
+
 
 ## Screen Shots
 
