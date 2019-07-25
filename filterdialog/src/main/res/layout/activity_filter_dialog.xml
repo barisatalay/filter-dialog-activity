@@ -130,6 +130,7 @@
                 android:layout_height="@dimen/layout_height_normal_big"
                 android:background="@drawable/bg_edittext_search"
                 android:textColorHint="@color/filterdialog_searchbox_hint"
+                android:gravity="center"
                 style="@style/AppTheme.TextView.Quicksand"/>
             <ImageView
                 android:layout_width="wrap_content"

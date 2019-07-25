@@ -36,6 +36,7 @@ public class FilterDialog implements View.OnClickListener {
     private View.OnClickListener closeListener;
     private int selectableCount;
     private String selectButtonText;
+    private boolean backButtonVisible = true;
 
     public FilterDialog(Activity mActivity) {
         this.mActivity = mActivity;
@@ -152,6 +153,7 @@ public class FilterDialog implements View.OnClickListener {
         LayoutInflater.from(mActivity).inflate(R.layout.activity_filter_dialog, view, true);
 
         dialogHolder = new DialogHolder(view);
+        dialogHolder.setBackButtonVisible(backButtonVisible);
         dialogHolder.setFilterType(filterType);
         alertDialogBuilder.setView(dialogHolder.itemView);
     }
@@ -284,5 +286,9 @@ public class FilterDialog implements View.OnClickListener {
 
     public void setSelectButtonText(String selectButtonText) {
         this.selectButtonText = selectButtonText;
+    }
+
+    public void disableBackButton(){
+        backButtonVisible = false;
     }
 }

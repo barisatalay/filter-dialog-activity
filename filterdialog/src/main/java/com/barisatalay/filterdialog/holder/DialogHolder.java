@@ -1,5 +1,6 @@
 package com.barisatalay.filterdialog.holder;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +40,7 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
     private FilterType filterType;
     private int selectableCount;
 
+    @SuppressLint("CheckResult")
     public DialogHolder(View itemView) {
         super(itemView);
 
@@ -161,5 +163,9 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
     public DialogHolder setSelectButton(String selectButtonText) {
         selectBtn.setText(selectButtonText);
         return this;
+    }
+
+    public void setBackButtonVisible(boolean value){
+        toolbar_back.setVisibility(value ? View.VISIBLE : View.INVISIBLE);
     }
 }
