@@ -108,6 +108,10 @@ Create FilterDialog for String class;
 Create FilterDialog for Custom class;
 ```java
    List<mdlHotel> personList = new ArrayList<>();
+   List<String> selectedList = new ArrayList<>();
+   
+   selectedList.add("2");
+   selectedList.add("4");
 
    personList.add(new mdlHotel("1","Bir"));
    personList.add(new mdlHotel("2","İki"));
@@ -119,6 +123,7 @@ Create FilterDialog for Custom class;
    filterDialog.setToolbarTitle("Model Filter");
    filterDialog.setSearchBoxHint("You can search");
    filterDialog.setSelectButtonText("Select");
+   filterDialog.setSelected(selectedList);
    filterDialog.setList(personList);
    filterDialog.setSelectableCount(2);
 
