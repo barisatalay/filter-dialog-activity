@@ -115,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<mdlHotel> personList = new ArrayList<>();
+                List<String> selectedList = new ArrayList<>();
+
+                selectedList.add("2");
+                selectedList.add("4");
 
                 personList.add(new mdlHotel("1","Bir"));
                 personList.add(new mdlHotel("2","İki"));
@@ -127,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 filterDialog.setSearchBoxHint("You can search");
                 filterDialog.setSelectButtonText("Select");
                 filterDialog.setList(personList);
+                //filterDialog.setSelected(selectedList);
                 filterDialog.setSelectableCount(2);
 
                 filterDialog.show("Otel", "Adi", new DialogListener.Multiple() {

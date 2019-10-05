@@ -20,6 +20,7 @@ import com.barisatalay.filterdialog.model.FilterItem;
 import com.barisatalay.filterdialog.model.FilterType;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -39,6 +40,7 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
     private DialogListener.Multiple listenerMultiple;
     private FilterType filterType;
     private int selectableCount;
+    private List selectedList;
 
     @SuppressLint("CheckResult")
     public DialogHolder(View itemView) {
@@ -83,6 +85,26 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
 
     public void setFilterList(List<FilterItem> filterList) {
         filterRecycler.setAdapter(createFilterAdapter(filterList));
+        if (filterRecycler.getAdapter() != null && filterRecycler.getAdapter() instanceof FilterAdapter){
+            List<FilterItem> selectedFilterList = getSelectedFilterList();
+            ((FilterAdapter) filterRecycler.getAdapter()).setSelectedData(selectedFilterList);
+        }
+    }
+
+    private List<FilterItem> getSelectedFilterList() {
+        List<FilterItem> result = new ArrayList<>();
+
+        List<FilterItem> allData = ((FilterAdapter) filterRecycler.getAdapter()).getAllData();
+        for (Object selectedItem : selectedList) {
+            for (FilterItem item : allData) {
+                if (selectedItem instanceof String && item.getCode().equalsIgnoreCase(String.valueOf(selectedItem))){
+                    result.add(item);
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 
     private FilterAdapter createFilterAdapter(List<FilterItem> filterList) {
@@ -167,5 +189,13 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
 
     public void setBackButtonVisible(boolean value){
         toolbar_back.setVisibility(value ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    public void setSelectedList(List selectedList) {
+        this.selectedList = selectedList;
+    }
+
+    public List getSelectedList() {
+        return selectedList;
     }
 }

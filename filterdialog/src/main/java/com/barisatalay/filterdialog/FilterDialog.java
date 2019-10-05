@@ -29,6 +29,7 @@ public class FilterDialog implements View.OnClickListener {
     private AlertDialog.Builder alertDialogBuilder;
     private AlertDialog alertDialog;
     private List filterList;
+    private List selectedList = new ArrayList();
     private DialogHolder dialogHolder;
     private String toolbarTitle;
     private String searchBoxHint;
@@ -89,6 +90,7 @@ public class FilterDialog implements View.OnClickListener {
         createDialogHolder(FilterType.Single);
         dialogHolder.setListenerSingle(dialogListener);
         setDefaultParameters();
+        dialogHolder.setSelectedList(selectedList);
         dialogHolder.setFilterList(prepareFilterList(idField, nameField));
 
         alertDialog = alertDialogBuilder.show();
@@ -100,7 +102,7 @@ public class FilterDialog implements View.OnClickListener {
         createDialogHolder(FilterType.Single);
         dialogHolder.setListenerSingle(dialogListener);
         setDefaultParameters();
-
+        dialogHolder.setSelectedList(selectedList);
         dialogHolder.setFilterList(prepareFilterList("",""));
         alertDialog = alertDialogBuilder.show();
     }
@@ -116,6 +118,7 @@ public class FilterDialog implements View.OnClickListener {
         createDialogHolder(FilterType.Multiple);
         dialogHolder.setListenerMultiple(dialogListener);
         setDefaultParameters();
+        dialogHolder.setSelectedList(selectedList);
         dialogHolder.setFilterList(prepareFilterList(idField, nameField));
 
         alertDialog = alertDialogBuilder.show();
@@ -130,7 +133,7 @@ public class FilterDialog implements View.OnClickListener {
         createDialogHolder(FilterType.Multiple);
         dialogHolder.setListenerMultiple(dialogListener);
         setDefaultParameters();
-
+        dialogHolder.setSelectedList(selectedList);
         dialogHolder.setFilterList(prepareFilterList("",""));
         alertDialog = alertDialogBuilder.show();
     }
@@ -290,5 +293,10 @@ public class FilterDialog implements View.OnClickListener {
 
     public void disableBackButton(){
         backButtonVisible = false;
+    }
+
+    public void setSelected(List selectedList) {
+        this.selectedList.clear();
+        this.selectedList.addAll(selectedList);
     }
 }
