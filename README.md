@@ -126,6 +126,9 @@ Create FilterDialog for Custom class;
    filterDialog.setSelected(selectedList);
    filterDialog.setList(personList);
    filterDialog.setSelectableCount(2);
+   
+   filterDialog.setSelectDrawable(R.drawable.ic_check);
+
 
    filterDialog.show("Otel", "Adi", new DialogListener.Multiple() {
        @Override
