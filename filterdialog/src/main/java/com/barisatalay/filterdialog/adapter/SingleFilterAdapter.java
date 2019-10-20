@@ -10,6 +10,8 @@ import java.util.List;
 
 public class SingleFilterAdapter extends FilterAdapter {
 
+    private int selectDrawable;
+
     public SingleFilterAdapter(List<FilterItem> cacheData) {
         super(cacheData);
     }
@@ -26,7 +28,9 @@ public class SingleFilterAdapter extends FilterAdapter {
 
     @Override
     public FilterHolder onCustomCreateViewHolder(View view) {
-        return new FilterHolder(view);
+        FilterHolder filterHolder = new FilterHolder(view);
+        filterHolder.setSelectDrawable(selectDrawable);
+        return filterHolder;
     }
 
     @Override
@@ -39,4 +43,11 @@ public class SingleFilterAdapter extends FilterAdapter {
         return false;
     }
 
+    public void setSelectDrawable(int selectDrawable) {
+        this.selectDrawable = selectDrawable;
+    }
+
+    public int getSelectDrawable() {
+        return selectDrawable;
+    }
 }

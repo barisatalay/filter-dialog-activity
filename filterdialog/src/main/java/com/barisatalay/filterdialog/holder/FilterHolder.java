@@ -3,6 +3,7 @@ package com.barisatalay.filterdialog.holder;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.barisatalay.filterdialog.R;
@@ -15,10 +16,12 @@ import com.barisatalay.filterdialog.model.FilterItem;
 
 public class FilterHolder extends BaseHolder<FilterItem> implements View.OnClickListener{
     private TextView titleTxt;
+    private ImageView selectedImg;
 
     public FilterHolder(View itemView) {
         super(itemView);
         titleTxt = itemView.findViewById(R.id.titleTxt);
+        selectedImg = itemView.findViewById(R.id.selectedImg);
     }
 
     @Override
@@ -27,9 +30,15 @@ public class FilterHolder extends BaseHolder<FilterItem> implements View.OnClick
         int padding = titleTxt.getPaddingLeft();
         if (getListener() != null) {
             boolean selected = getListener().isSelected(model);
-            if (selected)
-                titleTxt.setBackgroundResource(R.color.filterdialog_row_selected);
-            else{
+            if (selected) {
+                if (getSelectDrawable() == -1) {
+                    titleTxt.setBackgroundResource(R.color.filterdialog_row_selected);
+                }else{
+                    try {
+                        selectedImg.setImageResource(getSelectDrawable());
+                    }catch (Exception ignored){}
+                }
+            }else{
                 TypedValue typedValue = new TypedValue();
                 getContext().getTheme().resolveAttribute(R.attr.selectableItemBackground, typedValue, true);
                 titleTxt.setBackgroundResource(typedValue.resourceId);

@@ -14,6 +14,7 @@ public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
      * İçerisinde herhangi birşey stringe çevrilip saklanabilir.
      * */
     private String tempData;
+    private int selectDrawable = -1;
 
     public BaseHolder(View itemView) {
         super(itemView);
@@ -59,6 +60,14 @@ public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
         if (tempData == null)
             tempData = "";
         return tempData;
+    }
+
+    public void setSelectDrawable(int selectDrawable) {
+        this.selectDrawable = selectDrawable;
+    }
+
+    public int getSelectDrawable() {
+        return selectDrawable;
     }
 
     public interface HolderListener<M>{

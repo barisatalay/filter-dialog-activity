@@ -38,6 +38,7 @@ public class FilterDialog implements View.OnClickListener {
     private int selectableCount;
     private String selectButtonText;
     private boolean backButtonVisible = true;
+    private int selectDrawable = -1;
 
     public FilterDialog(Activity mActivity) {
         this.mActivity = mActivity;
@@ -156,6 +157,7 @@ public class FilterDialog implements View.OnClickListener {
         LayoutInflater.from(mActivity).inflate(R.layout.activity_filter_dialog, view, true);
 
         dialogHolder = new DialogHolder(view);
+        dialogHolder.setSelectDrawable(selectDrawable);
         dialogHolder.setBackButtonVisible(backButtonVisible);
         dialogHolder.setFilterType(filterType);
         alertDialogBuilder.setView(dialogHolder.itemView);
@@ -298,5 +300,13 @@ public class FilterDialog implements View.OnClickListener {
     public void setSelected(List selectedList) {
         this.selectedList.clear();
         this.selectedList.addAll(selectedList);
+    }
+
+    public void setSelectDrawable(int selectDrawable) {
+        this.selectDrawable = selectDrawable;
+    }
+
+    public int getSelectDrawable() {
+        return selectDrawable;
     }
 }

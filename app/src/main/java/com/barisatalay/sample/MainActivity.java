@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 filterDialog.setList(personList);
                 //filterDialog.setSelected(selectedList);
                 filterDialog.setSelectableCount(2);
+                filterDialog.setSelectDrawable(R.drawable.ic_check);
 
                 filterDialog.show("Otel", "Adi", new DialogListener.Multiple() {
                     @Override

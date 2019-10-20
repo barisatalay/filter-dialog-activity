@@ -10,6 +10,8 @@ import java.util.List;
 
 public class MultiFilterAdapter extends FilterAdapter{
 
+    private int selectDrawable;
+
     public MultiFilterAdapter(List<FilterItem> cacheData) {
         super(cacheData);
     }
@@ -26,7 +28,9 @@ public class MultiFilterAdapter extends FilterAdapter{
 
     @Override
     public FilterHolder onCustomCreateViewHolder(View view) {
-        return new FilterHolder(view);
+        FilterHolder filterHolder = new FilterHolder(view);
+        filterHolder.setSelectDrawable(selectDrawable);
+        return filterHolder;
     }
 
     @Override
@@ -42,5 +46,13 @@ public class MultiFilterAdapter extends FilterAdapter{
     @Override
     public void onClickListener(View view, int position) {
         selectEvent(position);
+    }
+
+    public void setSelectDrawable(int selectDrawable) {
+        this.selectDrawable = selectDrawable;
+    }
+
+    public int getSelectDrawable() {
+        return selectDrawable;
     }
 }

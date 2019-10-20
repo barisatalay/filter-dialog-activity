@@ -41,6 +41,7 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
     private FilterType filterType;
     private int selectableCount;
     private List selectedList;
+    private int selectDrawable = -1;
 
     @SuppressLint("CheckResult")
     public DialogHolder(View itemView) {
@@ -112,10 +113,12 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
         if (filterType == FilterType.Single){
             SingleFilterAdapter adapter = new SingleFilterAdapter(filterList);
             adapter.setListener(this);
+            adapter.setSelectDrawable(selectDrawable);
             adapter.setSelectableCount(selectableCount);
             return adapter;
         }else{
             MultiFilterAdapter adapter = new MultiFilterAdapter(filterList);
+            adapter.setSelectDrawable(selectDrawable);
             adapter.setListener(this);
             adapter.setSelectableCount(selectableCount);
             selectBtn.setVisibility(View.VISIBLE);
@@ -197,5 +200,13 @@ public class DialogHolder extends RecyclerView.ViewHolder implements AdapterList
 
     public List getSelectedList() {
         return selectedList;
+    }
+
+    public void setSelectDrawable(int selectDrawable) {
+        this.selectDrawable = selectDrawable;
+    }
+
+    public int getSelectDrawable() {
+        return selectDrawable;
     }
 }
