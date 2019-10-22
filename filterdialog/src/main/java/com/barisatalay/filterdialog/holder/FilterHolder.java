@@ -39,6 +39,8 @@ public class FilterHolder extends BaseHolder<FilterItem> implements View.OnClick
                     }catch (Exception ignored){}
                 }
             }else{
+                selectedImg.setImageResource(0);
+
                 TypedValue typedValue = new TypedValue();
                 getContext().getTheme().resolveAttribute(R.attr.selectableItemBackground, typedValue, true);
                 titleTxt.setBackgroundResource(typedValue.resourceId);

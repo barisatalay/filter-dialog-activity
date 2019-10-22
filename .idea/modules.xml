@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Project-filter-dialog-activity.iml" filepath="$PROJECT_DIR$/Project-filter-dialog-activity.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/filter-dialog-activity.iml" filepath="$PROJECT_DIR$/filter-dialog-activity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/filter-dialog-activity-app.iml" filepath="$PROJECT_DIR$/app/filter-dialog-activity-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/filterdialog/filter-dialog-activity-filterdialog.iml" filepath="$PROJECT_DIR$/filterdialog/filter-dialog-activity-filterdialog.iml" />
       <module fileurl="file://$PROJECT_DIR$/filterdialog/filterdialog.iml" filepath="$PROJECT_DIR$/filterdialog/filterdialog.iml" />
     </modules>
   </component>
